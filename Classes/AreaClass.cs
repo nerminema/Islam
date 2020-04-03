@@ -15,6 +15,7 @@ namespace ELK_POWER.Classes
             catch { return null; }
             finally { db.Dispose(); }
         }
+
         public List<usp_SelectAllAreaByID_Result> SelectAll(int id)
         {
             ALK_PowerEntities db = new ALK_PowerEntities();
