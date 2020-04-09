@@ -13,10 +13,10 @@ namespace ELK_POWER
     
     public partial class usp_SelectAllClients_Result
     {
-        public int ID { get; set; }
         public string Client_Name { get; set; }
         public string Client_Mobil { get; set; }
         public string Client_WhatusApp { get; set; }
+        public int ID { get; set; }
         public string BranchName { get; set; }
         public string Client_Category { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using ELK_POWER.Setup;
+﻿using ELK_POWER.Orders;
+using ELK_POWER.Setup;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,6 +81,30 @@ namespace ELK_POWER
         {
             Services services = new Services();
             services.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Clients.AllClients branches = new Clients.AllClients();
+            branches.Show();
+        }
+
+        private void طلبجديدToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Orders.NewOrder order = new Orders.NewOrder();
+            order.Show(this);
+        }
+
+        private void قائمةالطلباتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void الطلباتToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllOrders all = new AllOrders();
+            all.Show();
+
         }
     }
 }

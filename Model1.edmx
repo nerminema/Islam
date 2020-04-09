@@ -4,38 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ALK_PowerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+    <Schema Namespace="ALKPowerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="usp_DeleteAllAreaByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
@@ -69,10 +38,19 @@
         <Function Name="usp_DeleteAllServicesByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="usp_DeleteOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="usp_FilterAllClientsByAreaID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="usp_FilterAllClientsBybranchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_FilterAllClientsBybRANDID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_FilterAllClientsByCarID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="usp_FilterAllClientsByCatID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -122,6 +100,8 @@
           <Parameter Name="CarNo" Type="nvarchar" Mode="In" />
           <Parameter Name="ColorID" Type="int" Mode="In" />
           <Parameter Name="KM" Type="nvarchar" Mode="In" />
+          <Parameter Name="CC" Type="nvarchar" Mode="In" />
+          <Parameter Name="v" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="usp_InsertNewClient_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Client_CategoryName" Type="nvarchar" Mode="In" />
@@ -134,9 +114,22 @@
           <Parameter Name="HowDidYouKnowUSName" Type="nvarchar" Mode="In" />
           <Parameter Name="AreaID" Type="int" Mode="In" />
         </Function>
+        <Function Name="usp_InsertNewOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="int" Mode="In" />
+          <Parameter Name="OrderStatusID" Type="int" Mode="In" />
+          <Parameter Name="OrderDate" Type="date" Mode="In" />
+          <Parameter Name="BranchID" Type="int" Mode="In" />
+          <Parameter Name="TotalOrder" Type="money" Mode="In" />
+          <Parameter Name="Discount" Type="money" Mode="In" />
+          <Parameter Name="Tax" Type="money" Mode="In" />
+          <Parameter Name="FinalOrder" Type="money" Mode="In" />
+        </Function>
         <Function Name="usp_InsertNewServices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ServicesName" Type="nvarchar" Mode="In" />
           <Parameter Name="fees" Type="money" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertORderStus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="usp_SelectAllArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_SelectAllAreaByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -173,9 +166,13 @@
         <Function Name="usp_SelectAllClientsByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="usp_SelectAllClientsByMobil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="usp_SelectAllClientsByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="usp_SelectAllClientsCar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_SelectAllColors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_SelectAllColorsByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
@@ -184,10 +181,14 @@
         <Function Name="usp_SelectAllHowDidYouKnowUSByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="usp_SelectAllOrdersByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="usp_SelectAllServices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_SelectAllServicesByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="usp_SelectAllStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="usp_SelectAreaByCityID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -240,6 +241,8 @@
           <Parameter Name="ColorID" Type="int" Mode="In" />
           <Parameter Name="KM" Type="nvarchar" Mode="In" />
           <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="CC" Type="nvarchar" Mode="In" />
+          <Parameter Name="v" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="usp_UpdateNewClient_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Client_CategoryName" Type="nvarchar" Mode="In" />
@@ -253,63 +256,94 @@
           <Parameter Name="HowDidYouKnowUSName" Type="nvarchar" Mode="In" />
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
+        <Function Name="usp_UpdateNewOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientID" Type="int" Mode="In" />
+          <Parameter Name="OrderStatusID" Type="int" Mode="In" />
+          <Parameter Name="OrderDate" Type="date" Mode="In" />
+          <Parameter Name="BranchID" Type="int" Mode="In" />
+          <Parameter Name="TotalOrder" Type="money" Mode="In" />
+          <Parameter Name="Discount" Type="money" Mode="In" />
+          <Parameter Name="Tax" Type="money" Mode="In" />
+          <Parameter Name="FinalOrder" Type="money" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="usp_UpdateNewServices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ServicesName" Type="nvarchar" Mode="In" />
           <Parameter Name="fees" Type="money" Mode="In" />
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
-        <EntityContainer Name="ALK_PowerModelStoreContainer" />
+        <Function Name="usp_UpdateOrderStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ALKPowerModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ALK_PowerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ALK_PowerEntities" annotation:LazyLoadingEnabled="true" >
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
+      <Schema Namespace="ALKPowerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ALKPowerEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="usp_DeleteAllAreaByID">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
+          <FunctionImport Name="usp_DeleteAllBranchesByID">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ALK_PowerModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ALK_PowerModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="usp_DeleteAllBrandsByID">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteAllCarsByID">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteAllCityByID">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteAllClient_CarsByID">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteAllClient_CategoryByID">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteAllClientsByID">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteAllColorsByID">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteAllHowDidYouKnowUSByID">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteAllServicesByID">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DeleteOrder">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_FilterAllClientsByAreaID" ReturnType="Collection(ALKPowerModel.usp_FilterAllClientsByAreaID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_FilterAllClientsBybranchID" ReturnType="Collection(ALKPowerModel.usp_FilterAllClientsBybranchID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_FilterAllClientsBybRANDID" ReturnType="Collection(ALKPowerModel.usp_FilterAllClientsBybRANDID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_FilterAllClientsByCarID" ReturnType="Collection(ALKPowerModel.usp_FilterAllClientsByCarID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_FilterAllClientsByCatID" ReturnType="Collection(ALKPowerModel.usp_FilterAllClientsByCatID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_FilterAllClientsByCityID" ReturnType="Collection(ALKPowerModel.usp_FilterAllClientsByCityID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_FilterAllClientsByHOWID" ReturnType="Collection(ALKPowerModel.usp_FilterAllClientsByHOWID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_FilterAllClientsByID" ReturnType="Collection(ALKPowerModel.usp_FilterAllClientsByID_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="usp_InsertBrandsByID">
           <Parameter Name="BrandName" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectAllBrand" ReturnType="Collection(ALK_PowerModel.usp_SelectAllBrand_Result)" />
-          <FunctionImport Name="usp_SelectAllBrandsByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllBrandsByID_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_UpdateBrandsByID">
-            <Parameter Name="BrandName" Mode="In" Type="String" />
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteAllCarsByID">
-          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="usp_InsertCarsByID">
             <Parameter Name="CarModel" Mode="In" Type="String" />
@@ -317,131 +351,16 @@
             <Parameter Name="MotorCap" Mode="In" Type="String" />
             <Parameter Name="Man_Year" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="usp_SelectAllCars" ReturnType="Collection(ALK_PowerModel.usp_SelectAllCars_Result)" />
-          <FunctionImport Name="usp_SelectAllCarsByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllCarsByID_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_UpdateCarsByID">
-            <Parameter Name="CarModel" Mode="In" Type="String" />
-            <Parameter Name="BrandID" Mode="In" Type="Int32" />
-            <Parameter Name="MotorCap" Mode="In" Type="String" />
-            <Parameter Name="Man_Year" Mode="In" Type="String" />
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteAllCityByID">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_InsertNewCity">
-          <Parameter Name="CityName" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectAllCity" ReturnType="Collection(ALK_PowerModel.usp_SelectAllCity_Result)" />
-          <FunctionImport Name="usp_SelectAllCityByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllCityByID_Result)">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_UpdateNewCity">
-            <Parameter Name="CityName" Mode="In" Type="String" />
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteAllAreaByID">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="usp_InsertNewArea">
             <Parameter Name="AreaName" Mode="In" Type="String" />
             <Parameter Name="cityID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectAllArea" ReturnType="Collection(ALK_PowerModel.usp_SelectAllArea_Result)" />
-          <FunctionImport Name="usp_SelectAllAreaByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllAreaByID_Result)">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_UpdateNewArea">
-            <Parameter Name="AreaName" Mode="In" Type="String" />
-            <Parameter Name="cityID" Mode="In" Type="Int32" />
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteAllBranchesByID">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="usp_InsertNewBranches">
             <Parameter Name="BranchesName" Mode="In" Type="String" />
             <Parameter Name="AreaID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="usp_SelectAllBranches" ReturnType="Collection(ALK_PowerModel.usp_SelectAllBranches_Result)" />
-          <FunctionImport Name="usp_SelectAllBranchesByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllBranchesByID_Result)">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectAreaByCityID" ReturnType="Collection(ALK_PowerModel.usp_SelectAreaByCityID_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_UpdateNewBranches">
-            <Parameter Name="BranchesName" Mode="In" Type="String" />
-            <Parameter Name="AreaID" Mode="In" Type="Int32" />
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectBranchesByCityID" ReturnType="Collection(ALK_PowerModel.usp_SelectBranchesByCityID_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteAllColorsByID">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_InsertNewColors">
-            <Parameter Name="ColorsName" Mode="In" Type="String" />
-            <Parameter Name="AreaID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectAllColors" ReturnType="Collection(ALK_PowerModel.usp_SelectAllColors_Result)" />
-          <FunctionImport Name="usp_SelectAllColorsByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllColorsByID_Result)">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_UpdateNewColors">
-            <Parameter Name="ColorsName" Mode="In" Type="String" />
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteAllHowDidYouKnowUSByID">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_InsertNewHowDidYouKnowUS">
-            <Parameter Name="HowDidYouKnowUSName" Mode="In" Type="String" />
-            <Parameter Name="AreaID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectAllHowDidYouKnowUS" ReturnType="Collection(ALK_PowerModel.usp_SelectAllHowDidYouKnowUS_Result)" />
-          <FunctionImport Name="usp_SelectAllHowDidYouKnowUSByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllHowDidYouKnowUSByID_Result)">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_UpdateNewHowDidYouKnowUS">
-            <Parameter Name="HowDidYouKnowUSName" Mode="In" Type="String" />
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteAllServicesByID">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_InsertNewServices">
-            <Parameter Name="ServicesName" Mode="In" Type="String" />
-            <Parameter Name="fees" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectAllServices" ReturnType="Collection(ALK_PowerModel.usp_SelectAllServices_Result)" />
-          <FunctionImport Name="usp_SelectAllServicesByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllServicesByID_Result)">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_UpdateNewServices">
-            <Parameter Name="ServicesName" Mode="In" Type="String" />
-            <Parameter Name="fees" Mode="In" Type="Decimal" />
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteAllClient_CategoryByID">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_InsertNewClient_Category">
-          <Parameter Name="Client_CategoryName" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectAllClient_Category" ReturnType="Collection(ALK_PowerModel.usp_SelectAllClient_Category_Result)" />
-          <FunctionImport Name="usp_SelectAllClient_CategoryByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllClient_CategoryByID_Result)">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_UpdateNewClient_Category">
-            <Parameter Name="Client_CategoryName" Mode="In" Type="String" />
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_DeleteAllClientsByID">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
+          <FunctionImport Name="usp_InsertNewCity">
+          <Parameter Name="CityName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_InsertNewClient">
             <Parameter Name="Client_Name" Mode="In" Type="String" />
@@ -452,9 +371,121 @@
             <Parameter Name="HowDidYouKnowus" Mode="In" Type="Int32" />
             <Parameter Name="BranchID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="usp_SelectAllClients" ReturnType="Collection(ALK_PowerModel.usp_SelectAllClients_Result)" />
-          <FunctionImport Name="usp_SelectAllClientsByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllClientsByID_Result)">
+          <FunctionImport Name="usp_InsertNewClient_Car">
+            <Parameter Name="CLientID" Mode="In" Type="Int32" />
+            <Parameter Name="CarID" Mode="In" Type="Int32" />
+            <Parameter Name="CarNo" Mode="In" Type="String" />
+            <Parameter Name="ColorID" Mode="In" Type="Int32" />
+            <Parameter Name="KM" Mode="In" Type="String" />
+            <Parameter Name="CC" Mode="In" Type="String" />
+            <Parameter Name="v" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertNewClient_Category">
+          <Parameter Name="Client_CategoryName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertNewColors">
+            <Parameter Name="ColorsName" Mode="In" Type="String" />
+            <Parameter Name="AreaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertNewHowDidYouKnowUS">
+            <Parameter Name="HowDidYouKnowUSName" Mode="In" Type="String" />
+            <Parameter Name="AreaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertNewServices">
+            <Parameter Name="ServicesName" Mode="In" Type="String" />
+            <Parameter Name="fees" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertORderStus">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllArea" ReturnType="Collection(ALKPowerModel.usp_SelectAllArea_Result)" />
+          <FunctionImport Name="usp_SelectAllAreaByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllAreaByID_Result)">
           <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllBranches" ReturnType="Collection(ALKPowerModel.usp_SelectAllBranches_Result)" />
+          <FunctionImport Name="usp_SelectAllBranchesByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllBranchesByID_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllBrand" ReturnType="Collection(ALKPowerModel.usp_SelectAllBrand_Result)" />
+          <FunctionImport Name="usp_SelectAllBrandsByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllBrandsByID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllCars" ReturnType="Collection(ALKPowerModel.usp_SelectAllCars_Result)" />
+          <FunctionImport Name="usp_SelectAllCarsByBrandID" ReturnType="Collection(ALKPowerModel.usp_SelectAllCarsByBrandID_Result)">
+          <Parameter Name="brandID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllCarsByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllCarsByID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllCity" ReturnType="Collection(ALKPowerModel.usp_SelectAllCity_Result)" />
+          <FunctionImport Name="usp_SelectAllCityByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllCityByID_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllClient_Cars" ReturnType="Collection(ALKPowerModel.usp_SelectAllClient_Cars_Result)" />
+          <FunctionImport Name="usp_SelectAllClient_CarsByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllClient_CarsByID_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllClient_Category" ReturnType="Collection(ALKPowerModel.usp_SelectAllClient_Category_Result)" />
+          <FunctionImport Name="usp_SelectAllClient_CategoryByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllClient_CategoryByID_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllClients" ReturnType="Collection(ALKPowerModel.usp_SelectAllClients_Result)" />
+          <FunctionImport Name="usp_SelectAllClientsByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllClientsByID_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllClientsByName" ReturnType="Collection(ALKPowerModel.usp_SelectAllClientsByName_Result)">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllColors" ReturnType="Collection(ALKPowerModel.usp_SelectAllColors_Result)" />
+          <FunctionImport Name="usp_SelectAllColorsByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllColorsByID_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllHowDidYouKnowUS" ReturnType="Collection(ALKPowerModel.usp_SelectAllHowDidYouKnowUS_Result)" />
+          <FunctionImport Name="usp_SelectAllHowDidYouKnowUSByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllHowDidYouKnowUSByID_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllOrdersByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllOrdersByID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllServices" ReturnType="Collection(ALKPowerModel.usp_SelectAllServices_Result)" />
+          <FunctionImport Name="usp_SelectAllServicesByID" ReturnType="Collection(ALKPowerModel.usp_SelectAllServicesByID_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllStatus" ReturnType="Collection(ALKPowerModel.usp_SelectAllStatus_Result)" />
+          <FunctionImport Name="usp_SelectAreaByCityID" ReturnType="Collection(ALKPowerModel.usp_SelectAreaByCityID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectBranchesByCityID" ReturnType="Collection(ALKPowerModel.usp_SelectBranchesByCityID_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectClientCarByClient" ReturnType="Collection(ALKPowerModel.usp_SelectClientCarByClient_Result)">
+          <Parameter Name="clientID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectMaxClientID" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="usp_UpdateBrandsByID">
+            <Parameter Name="BrandName" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateCarsByID">
+            <Parameter Name="CarModel" Mode="In" Type="String" />
+            <Parameter Name="BrandID" Mode="In" Type="Int32" />
+            <Parameter Name="MotorCap" Mode="In" Type="String" />
+            <Parameter Name="Man_Year" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateNewArea">
+            <Parameter Name="AreaName" Mode="In" Type="String" />
+            <Parameter Name="cityID" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateNewBranches">
+            <Parameter Name="BranchesName" Mode="In" Type="String" />
+            <Parameter Name="AreaID" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateNewCity">
+            <Parameter Name="CityName" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="usp_UpdateNewClient">
             <Parameter Name="Client_Name" Mode="In" Type="String" />
@@ -466,24 +497,6 @@
             <Parameter Name="BranchID" Mode="In" Type="Int32" />
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="usp_SelectAllCarsByBrandID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllCarsByBrandID_Result)">
-          <Parameter Name="brandID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectMaxClientID" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="usp_DeleteAllClient_CarsByID">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_InsertNewClient_Car">
-            <Parameter Name="CLientID" Mode="In" Type="Int32" />
-            <Parameter Name="CarID" Mode="In" Type="Int32" />
-            <Parameter Name="CarNo" Mode="In" Type="String" />
-            <Parameter Name="ColorID" Mode="In" Type="Int32" />
-            <Parameter Name="KM" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectAllClient_Cars" ReturnType="Collection(ALK_PowerModel.usp_SelectAllClient_Cars_Result)" />
-          <FunctionImport Name="usp_SelectAllClient_CarsByID" ReturnType="Collection(ALK_PowerModel.usp_SelectAllClient_CarsByID_Result)">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="usp_UpdateNewClient_Car">
             <Parameter Name="CLientID" Mode="In" Type="Int32" />
             <Parameter Name="CarID" Mode="In" Type="Int32" />
@@ -491,188 +504,56 @@
             <Parameter Name="ColorID" Mode="In" Type="Int32" />
             <Parameter Name="KM" Mode="In" Type="String" />
             <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="CC" Mode="In" Type="String" />
+            <Parameter Name="v" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="usp_SelectClientCarByClient" ReturnType="Collection(ALK_PowerModel.usp_SelectClientCarByClient_Result)">
-          <Parameter Name="clientID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_FilterAllClientsByAreaID" ReturnType="Collection(ALK_PowerModel.usp_FilterAllClientsByAreaID_Result)">
+          <FunctionImport Name="usp_UpdateNewClient_Category">
+            <Parameter Name="Client_CategoryName" Mode="In" Type="String" />
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="usp_FilterAllClientsBybranchID" ReturnType="Collection(ALK_PowerModel.usp_FilterAllClientsBybranchID_Result)">
+          <FunctionImport Name="usp_UpdateNewColors">
+            <Parameter Name="ColorsName" Mode="In" Type="String" />
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="usp_FilterAllClientsByCatID" ReturnType="Collection(ALK_PowerModel.usp_FilterAllClientsByCatID_Result)">
+          <FunctionImport Name="usp_UpdateNewHowDidYouKnowUS">
+            <Parameter Name="HowDidYouKnowUSName" Mode="In" Type="String" />
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="usp_FilterAllClientsByCityID" ReturnType="Collection(ALK_PowerModel.usp_FilterAllClientsByCityID_Result)">
+          <FunctionImport Name="usp_UpdateNewServices">
+            <Parameter Name="ServicesName" Mode="In" Type="String" />
+            <Parameter Name="fees" Mode="In" Type="Decimal" />
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="usp_FilterAllClientsByHOWID" ReturnType="Collection(ALK_PowerModel.usp_FilterAllClientsByHOWID_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_FilterAllClientsByID" ReturnType="Collection(ALK_PowerModel.usp_FilterAllClientsByID_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="usp_SelectAllClientsByName" ReturnType="Collection(ALK_PowerModel.usp_SelectAllClientsByName_Result)">
+          <FunctionImport Name="usp_UpdateOrderStatus">
             <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllClientsByMobil" ReturnType="Collection(ALKPowerModel.usp_SelectAllClientsByMobil_Result)">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SelectAllClientsCar" ReturnType="Collection(ALKPowerModel.usp_SelectAllClientsCar_Result)" />
+          <FunctionImport Name="usp_InsertNewOrder">
+            <Parameter Name="ClientID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderStatusID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderDate" Mode="In" Type="DateTime" />
+            <Parameter Name="BranchID" Mode="In" Type="Int32" />
+            <Parameter Name="TotalOrder" Mode="In" Type="Decimal" />
+            <Parameter Name="Discount" Mode="In" Type="Decimal" />
+            <Parameter Name="Tax" Mode="In" Type="Decimal" />
+            <Parameter Name="FinalOrder" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="usp_UpdateNewOrder">
+            <Parameter Name="ClientID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderStatusID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderDate" Mode="In" Type="DateTime" />
+            <Parameter Name="BranchID" Mode="In" Type="Int32" />
+            <Parameter Name="TotalOrder" Mode="In" Type="Decimal" />
+            <Parameter Name="Discount" Mode="In" Type="Decimal" />
+            <Parameter Name="Tax" Mode="In" Type="Decimal" />
+            <Parameter Name="FinalOrder" Mode="In" Type="Decimal" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllBrand_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllBrandsByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllCars_Result">
-          <Property Type="String" Name="CarModel" Nullable="true" />
-          <Property Type="String" Name="MotorCap" Nullable="true" />
-          <Property Type="String" Name="Man_Year" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllCarsByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="CarModel" Nullable="true" />
-          <Property Type="Int32" Name="BrandID" Nullable="true" />
-          <Property Type="String" Name="MotorCap" Nullable="true" />
-          <Property Type="String" Name="Man_Year" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllCity_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="CityName" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllCityByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="CityName" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllArea_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="AreaName" Nullable="true" />
-          <Property Type="Int32" Name="CityID" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllAreaByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="AreaName" Nullable="true" />
-          <Property Type="Int32" Name="CityID" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllBranches_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="BranchName" Nullable="true" />
-          <Property Type="Int32" Name="AreaID" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllBranchesByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="BranchName" Nullable="true" />
-          <Property Type="Int32" Name="AreaID" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAreaByCityID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="AreaName" Nullable="true" />
-          <Property Type="Int32" Name="CityID" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectBranchesByCityID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="BranchName" Nullable="true" />
-          <Property Type="Int32" Name="AreaID" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllColors_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="ColorName" Nullable="true" MaxLength="150" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllColorsByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="ColorName" Nullable="true" MaxLength="150" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllHowDidYouKnowUS_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="HowDidYouUS" Nullable="true" MaxLength="Max" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllHowDidYouKnowUSByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="HowDidYouUS" Nullable="true" MaxLength="Max" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllServices_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Services" Nullable="true" MaxLength="250" />
-          <Property Type="Decimal" Name="ServicesFees" Nullable="true" Precision="19" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllServicesByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Services" Nullable="true" MaxLength="250" />
-          <Property Type="Decimal" Name="ServicesFees" Nullable="true" Precision="19" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllClient_Category_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllClient_CategoryByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllClients_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Client_Name" Nullable="true" />
-          <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Client_WhatusApp" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="BranchName" Nullable="true" />
-          <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
-          </ComplexType>
-        <ComplexType Name="usp_SelectAllClientsByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Client_Name" Nullable="true" />
-          <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Client_WhatusApp" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="ClientAreaID" Nullable="true" />
-          <Property Type="Int32" Name="Client_CatID" Nullable="true" />
-          <Property Type="Int32" Name="HowDidYouKnowus" Nullable="true" />
-          <Property Type="Int32" Name="BranchID" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllCarsByBrandID_Result">
-          <Property Type="String" Name="CarModel" Nullable="true" />
-          <Property Type="String" Name="MotorCap" Nullable="true" />
-          <Property Type="String" Name="Man_Year" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllClient_Cars_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="Int32" Name="CLientID" Nullable="true" />
-          <Property Type="Int32" Name="CarID" Nullable="true" />
-          <Property Type="String" Name="CarNo" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="ColorID" Nullable="true" />
-          <Property Type="String" Name="KM" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectAllClient_CarsByID_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="Int32" Name="CLientID" Nullable="true" />
-          <Property Type="Int32" Name="CarID" Nullable="true" />
-          <Property Type="String" Name="CarNo" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="ColorID" Nullable="true" />
-          <Property Type="String" Name="KM" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="usp_SelectClientCarByClient_Result">
-          <Property Type="String" Name="CarModel" Nullable="true" />
-          <Property Type="String" Name="MotorCap" Nullable="true" />
-          <Property Type="String" Name="Man_Year" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="CarNo" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="KM" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="CarID" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="usp_FilterAllClientsByAreaID_Result">
           <Property Type="String" Name="Client_Name" Nullable="true" />
           <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
@@ -682,6 +563,29 @@
           <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
         </ComplexType>
         <ComplexType Name="usp_FilterAllClientsBybranchID_Result">
+          <Property Type="String" Name="Client_Name" Nullable="true" />
+          <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Client_WhatusApp" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BranchName" Nullable="true" />
+          <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CarModel" Nullable="true" />
+          <Property Type="String" Name="CarNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CarLetters" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="V" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_FilterAllClientsBybRANDID_Result">
+          <Property Type="String" Name="Client_Name" Nullable="true" />
+          <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Client_WhatusApp" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BranchName" Nullable="true" />
+          <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="usp_FilterAllClientsByCarID_Result">
           <Property Type="String" Name="Client_Name" Nullable="true" />
           <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Client_WhatusApp" Nullable="true" MaxLength="50" />
@@ -721,7 +625,91 @@
           <Property Type="String" Name="BranchName" Nullable="true" />
           <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
         </ComplexType>
-        <ComplexType Name="usp_SelectAllClientsByName_Result">
+        <ComplexType Name="usp_SelectAllArea_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="AreaName" Nullable="true" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllAreaByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="AreaName" Nullable="true" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllBranches_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BranchName" Nullable="true" />
+          <Property Type="Int32" Name="AreaID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllBranchesByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BranchName" Nullable="true" />
+          <Property Type="Int32" Name="AreaID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllBrand_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllBrandsByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllCars_Result">
+          <Property Type="String" Name="CarModel" Nullable="true" />
+          <Property Type="String" Name="MotorCap" Nullable="true" />
+          <Property Type="String" Name="Man_Year" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllCarsByBrandID_Result">
+          <Property Type="String" Name="CarModel" Nullable="true" />
+          <Property Type="String" Name="MotorCap" Nullable="true" />
+          <Property Type="String" Name="Man_Year" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllCarsByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CarModel" Nullable="true" />
+          <Property Type="Int32" Name="BrandID" Nullable="true" />
+          <Property Type="String" Name="MotorCap" Nullable="true" />
+          <Property Type="String" Name="Man_Year" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllCity_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllCityByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllClient_Cars_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CLientID" Nullable="true" />
+          <Property Type="Int32" Name="CarID" Nullable="true" />
+          <Property Type="String" Name="CarNo" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ColorID" Nullable="true" />
+          <Property Type="String" Name="KM" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllClient_CarsByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CLientID" Nullable="true" />
+          <Property Type="Int32" Name="CarID" Nullable="true" />
+          <Property Type="String" Name="CarNo" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ColorID" Nullable="true" />
+          <Property Type="String" Name="KM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CarLetters" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="V" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllClient_Category_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllClient_CategoryByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllClients_Result">
           <Property Type="String" Name="Client_Name" Nullable="true" />
           <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Client_WhatusApp" Nullable="true" MaxLength="50" />
@@ -729,60 +717,303 @@
           <Property Type="String" Name="BranchName" Nullable="true" />
           <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
         </ComplexType>
+        <ComplexType Name="usp_SelectAllClientsByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Client_Name" Nullable="true" />
+          <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Client_WhatusApp" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ClientAreaID" Nullable="true" />
+          <Property Type="Int32" Name="Client_CatID" Nullable="true" />
+          <Property Type="Int32" Name="HowDidYouKnowus" Nullable="true" />
+          <Property Type="Int32" Name="BranchID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllClientsByName_Result">
+          <Property Type="String" Name="Client_Name" Nullable="true" />
+          <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Client_WhatusApp" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BranchName" Nullable="true" />
+          <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CarModel" Nullable="true" />
+          <Property Type="String" Name="CarNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CarLetters" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="V" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllColors_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="ColorName" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllColorsByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="ColorName" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllHowDidYouKnowUS_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="HowDidYouUS" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllHowDidYouKnowUSByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="HowDidYouUS" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllOrdersByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="StatusOrder" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllServices_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Services" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="ServicesFees" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllServicesByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Services" Nullable="true" MaxLength="250" />
+          <Property Type="Decimal" Name="ServicesFees" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllStatus_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="StatusOrder" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAreaByCityID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="AreaName" Nullable="true" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectBranchesByCityID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BranchName" Nullable="true" />
+          <Property Type="Int32" Name="AreaID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectClientCarByClient_Result">
+          <Property Type="String" Name="CarModel" Nullable="true" />
+          <Property Type="String" Name="MotorCap" Nullable="true" />
+          <Property Type="String" Name="Man_Year" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="CarID" Nullable="true" />
+          <Property Type="String" Name="CarNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KM" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllClientsByMobil_Result">
+          <Property Type="String" Name="Client_Name" Nullable="true" />
+          <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Client_WhatusApp" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BranchName" Nullable="true" />
+          <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CarModel" Nullable="true" />
+          <Property Type="String" Name="CarNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CarLetters" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="V" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_SelectAllClientsCar_Result">
+          <Property Type="String" Name="Client_Name" Nullable="true" />
+          <Property Type="String" Name="Client_Mobil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Client_WhatusApp" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BranchName" Nullable="true" />
+          <Property Type="String" Name="Client_Category" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CarModel" Nullable="true" />
+          <Property Type="String" Name="CarNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CarLetters" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="V" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ALK_PowerModelStoreContainer" CdmEntityContainer="ALK_PowerEntities" >
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ALK_PowerModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ALK_PowerModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ALK_PowerModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ALK_PowerModel.Store.sp_helpdiagramdefinition">
+        <EntityContainerMapping StorageEntityContainer="ALKPowerModelStoreContainer" CdmEntityContainer="ALKPowerEntities" >
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllAreaByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllAreaByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllBranchesByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllBranchesByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllBrandsByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllBrandsByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllCarsByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllCarsByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllCityByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllCityByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllClient_CarsByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllClient_CarsByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllClient_CategoryByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllClient_CategoryByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllClientsByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllClientsByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllColorsByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllColorsByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllHowDidYouKnowUSByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllHowDidYouKnowUSByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteAllServicesByID" FunctionName="ALKPowerModel.Store.usp_DeleteAllServicesByID" />
+          <FunctionImportMapping FunctionImportName="usp_DeleteOrder" FunctionName="ALKPowerModel.Store.usp_DeleteOrder" />
+          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByAreaID" FunctionName="ALKPowerModel.Store.usp_FilterAllClientsByAreaID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ALK_PowerModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_FilterAllClientsByAreaID_Result">
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
+                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ALK_PowerModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ALK_PowerModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllBrandsByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllBrandsByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertBrandsByID" FunctionName="ALK_PowerModel.Store.usp_InsertBrandsByID" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllBrand" FunctionName="ALK_PowerModel.Store.usp_SelectAllBrand">
+          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsBybranchID" FunctionName="ALKPowerModel.Store.usp_FilterAllClientsBybranchID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllBrand_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_FilterAllClientsBybranchID_Result">
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
+                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="CarLetters" ColumnName="CarLetters" />
+                <ScalarProperty Name="KM" ColumnName="KM" />
+                <ScalarProperty Name="CC" ColumnName="CC" />
+                <ScalarProperty Name="V" ColumnName="V" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsBybRANDID" FunctionName="ALKPowerModel.Store.usp_FilterAllClientsBybRANDID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_FilterAllClientsBybRANDID_Result">
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
+                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByCarID" FunctionName="ALKPowerModel.Store.usp_FilterAllClientsByCarID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_FilterAllClientsByCarID_Result">
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
+                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByCatID" FunctionName="ALKPowerModel.Store.usp_FilterAllClientsByCatID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_FilterAllClientsByCatID_Result">
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
+                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByCityID" FunctionName="ALKPowerModel.Store.usp_FilterAllClientsByCityID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_FilterAllClientsByCityID_Result">
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
+                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByHOWID" FunctionName="ALKPowerModel.Store.usp_FilterAllClientsByHOWID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_FilterAllClientsByHOWID_Result">
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
+                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByID" FunctionName="ALKPowerModel.Store.usp_FilterAllClientsByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_FilterAllClientsByID_Result">
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
+                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_InsertBrandsByID" FunctionName="ALKPowerModel.Store.usp_InsertBrandsByID" />
+          <FunctionImportMapping FunctionImportName="usp_InsertCarsByID" FunctionName="ALKPowerModel.Store.usp_InsertCarsByID" />
+          <FunctionImportMapping FunctionImportName="usp_InsertNewArea" FunctionName="ALKPowerModel.Store.usp_InsertNewArea" />
+          <FunctionImportMapping FunctionImportName="usp_InsertNewBranches" FunctionName="ALKPowerModel.Store.usp_InsertNewBranches" />
+          <FunctionImportMapping FunctionImportName="usp_InsertNewCity" FunctionName="ALKPowerModel.Store.usp_InsertNewCity" />
+          <FunctionImportMapping FunctionImportName="usp_InsertNewClient" FunctionName="ALKPowerModel.Store.usp_InsertNewClient" />
+          <FunctionImportMapping FunctionImportName="usp_InsertNewClient_Car" FunctionName="ALKPowerModel.Store.usp_InsertNewClient_Car" />
+          <FunctionImportMapping FunctionImportName="usp_InsertNewClient_Category" FunctionName="ALKPowerModel.Store.usp_InsertNewClient_Category" />
+          <FunctionImportMapping FunctionImportName="usp_InsertNewColors" FunctionName="ALKPowerModel.Store.usp_InsertNewColors" />
+          <FunctionImportMapping FunctionImportName="usp_InsertNewHowDidYouKnowUS" FunctionName="ALKPowerModel.Store.usp_InsertNewHowDidYouKnowUS" />
+          <FunctionImportMapping FunctionImportName="usp_InsertNewServices" FunctionName="ALKPowerModel.Store.usp_InsertNewServices" />
+          <FunctionImportMapping FunctionImportName="usp_InsertORderStus" FunctionName="ALKPowerModel.Store.usp_InsertORderStus" />
+          <FunctionImportMapping FunctionImportName="usp_SelectAllArea" FunctionName="ALKPowerModel.Store.usp_SelectAllArea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllArea_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllAreaByID" FunctionName="ALKPowerModel.Store.usp_SelectAllAreaByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllAreaByID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllBranches" FunctionName="ALKPowerModel.Store.usp_SelectAllBranches">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllBranches_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllBranchesByID" FunctionName="ALKPowerModel.Store.usp_SelectAllBranchesByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllBranchesByID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllBrand" FunctionName="ALKPowerModel.Store.usp_SelectAllBrand">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllBrand_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllBrandsByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllBrandsByID">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllBrandsByID" FunctionName="ALKPowerModel.Store.usp_SelectAllBrandsByID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllBrandsByID_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllBrandsByID_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateBrandsByID" FunctionName="ALK_PowerModel.Store.usp_UpdateBrandsByID" />
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllCarsByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllCarsByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertCarsByID" FunctionName="ALK_PowerModel.Store.usp_InsertCarsByID" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllCars" FunctionName="ALK_PowerModel.Store.usp_SelectAllCars">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllCars" FunctionName="ALKPowerModel.Store.usp_SelectAllCars">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllCars_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllCars_Result">
                 <ScalarProperty Name="CarModel" ColumnName="CarModel" />
                 <ScalarProperty Name="MotorCap" ColumnName="MotorCap" />
                 <ScalarProperty Name="Man_Year" ColumnName="Man_Year" />
@@ -791,9 +1022,20 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllCarsByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllCarsByID">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllCarsByBrandID" FunctionName="ALKPowerModel.Store.usp_SelectAllCarsByBrandID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllCarsByID_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllCarsByBrandID_Result">
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+                <ScalarProperty Name="MotorCap" ColumnName="MotorCap" />
+                <ScalarProperty Name="Man_Year" ColumnName="Man_Year" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllCarsByID" FunctionName="ALKPowerModel.Store.usp_SelectAllCarsByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllCarsByID_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CarModel" ColumnName="CarModel" />
                 <ScalarProperty Name="BrandID" ColumnName="BrandID" />
@@ -802,181 +1044,80 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateCarsByID" FunctionName="ALK_PowerModel.Store.usp_UpdateCarsByID" />
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllCityByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllCityByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertNewCity" FunctionName="ALK_PowerModel.Store.usp_InsertNewCity" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllCity" FunctionName="ALK_PowerModel.Store.usp_SelectAllCity">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllCity" FunctionName="ALKPowerModel.Store.usp_SelectAllCity">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllCity_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllCity_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllCityByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllCityByID">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllCityByID" FunctionName="ALKPowerModel.Store.usp_SelectAllCityByID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllCityByID_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllCityByID_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateNewCity" FunctionName="ALK_PowerModel.Store.usp_UpdateNewCity" />
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllAreaByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllAreaByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertNewArea" FunctionName="ALK_PowerModel.Store.usp_InsertNewArea" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllArea" FunctionName="ALK_PowerModel.Store.usp_SelectAllArea">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllClient_Cars" FunctionName="ALKPowerModel.Store.usp_SelectAllClient_Cars">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllArea_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllClient_Cars_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
-                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CLientID" ColumnName="CLientID" />
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="KM" ColumnName="KM" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllAreaByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllAreaByID">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllClient_CarsByID" FunctionName="ALKPowerModel.Store.usp_SelectAllClient_CarsByID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllAreaByID_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllClient_CarsByID_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
-                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CLientID" ColumnName="CLientID" />
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="KM" ColumnName="KM" />
+                <ScalarProperty Name="CarLetters" ColumnName="CarLetters" />
+                <ScalarProperty Name="CC" ColumnName="CC" />
+                <ScalarProperty Name="V" ColumnName="V" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateNewArea" FunctionName="ALK_PowerModel.Store.usp_UpdateNewArea" />
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllBranchesByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllBranchesByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertNewBranches" FunctionName="ALK_PowerModel.Store.usp_InsertNewBranches" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllBranches" FunctionName="ALK_PowerModel.Store.usp_SelectAllBranches">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllClient_Category" FunctionName="ALKPowerModel.Store.usp_SelectAllClient_Category">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllBranches_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllBranchesByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllBranchesByID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllBranchesByID_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAreaByCityID" FunctionName="ALK_PowerModel.Store.usp_SelectAreaByCityID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAreaByCityID_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
-                <ScalarProperty Name="CityID" ColumnName="CityID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateNewBranches" FunctionName="ALK_PowerModel.Store.usp_UpdateNewBranches" />
-          <FunctionImportMapping FunctionImportName="usp_SelectBranchesByCityID" FunctionName="ALK_PowerModel.Store.usp_SelectBranchesByCityID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectBranchesByCityID_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllColorsByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllColorsByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertNewColors" FunctionName="ALK_PowerModel.Store.usp_InsertNewColors" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllColors" FunctionName="ALK_PowerModel.Store.usp_SelectAllColors">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllColors_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllColorsByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllColorsByID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllColorsByID_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateNewColors" FunctionName="ALK_PowerModel.Store.usp_UpdateNewColors" />
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllHowDidYouKnowUSByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllHowDidYouKnowUSByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertNewHowDidYouKnowUS" FunctionName="ALK_PowerModel.Store.usp_InsertNewHowDidYouKnowUS" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllHowDidYouKnowUS" FunctionName="ALK_PowerModel.Store.usp_SelectAllHowDidYouKnowUS">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllHowDidYouKnowUS_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="HowDidYouUS" ColumnName="HowDidYouUS" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllHowDidYouKnowUSByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllHowDidYouKnowUSByID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllHowDidYouKnowUSByID_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="HowDidYouUS" ColumnName="HowDidYouUS" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateNewHowDidYouKnowUS" FunctionName="ALK_PowerModel.Store.usp_UpdateNewHowDidYouKnowUS" />
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllServicesByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllServicesByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertNewServices" FunctionName="ALK_PowerModel.Store.usp_InsertNewServices" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllServices" FunctionName="ALK_PowerModel.Store.usp_SelectAllServices">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllServices_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Services" ColumnName="Services" />
-                <ScalarProperty Name="ServicesFees" ColumnName="ServicesFees" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllServicesByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllServicesByID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllServicesByID_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Services" ColumnName="Services" />
-                <ScalarProperty Name="ServicesFees" ColumnName="ServicesFees" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateNewServices" FunctionName="ALK_PowerModel.Store.usp_UpdateNewServices" />
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllClient_CategoryByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllClient_CategoryByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertNewClient_Category" FunctionName="ALK_PowerModel.Store.usp_InsertNewClient_Category" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllClient_Category" FunctionName="ALK_PowerModel.Store.usp_SelectAllClient_Category">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllClient_Category_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllClient_Category_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllClient_CategoryByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllClient_CategoryByID">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllClient_CategoryByID" FunctionName="ALKPowerModel.Store.usp_SelectAllClient_CategoryByID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllClient_CategoryByID_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllClient_CategoryByID_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateNewClient_Category" FunctionName="ALK_PowerModel.Store.usp_UpdateNewClient_Category" />
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllClientsByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllClientsByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertNewClient" FunctionName="ALK_PowerModel.Store.usp_InsertNewClient" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllClients" FunctionName="ALK_PowerModel.Store.usp_SelectAllClients">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllClients" FunctionName="ALKPowerModel.Store.usp_SelectAllClients">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllClients_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllClients_Result">
                 <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
                 <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
                 <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="BranchName" ColumnName="BranchName" />
                 <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
-                </ComplexTypeMapping>
+              </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllClientsByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllClientsByID">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllClientsByID" FunctionName="ALKPowerModel.Store.usp_SelectAllClientsByID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllClientsByID_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllClientsByID_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
                 <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
@@ -988,144 +1129,176 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateNewClient" FunctionName="ALK_PowerModel.Store.usp_UpdateNewClient" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllCarsByBrandID" FunctionName="ALK_PowerModel.Store.usp_SelectAllCarsByBrandID">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllClientsByName" FunctionName="ALKPowerModel.Store.usp_SelectAllClientsByName">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllCarsByBrandID_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllClientsByName_Result">
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
+                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="CarLetters" ColumnName="CarLetters" />
+                <ScalarProperty Name="KM" ColumnName="KM" />
+                <ScalarProperty Name="CC" ColumnName="CC" />
+                <ScalarProperty Name="V" ColumnName="V" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllColors" FunctionName="ALKPowerModel.Store.usp_SelectAllColors">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllColors_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllColorsByID" FunctionName="ALKPowerModel.Store.usp_SelectAllColorsByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllColorsByID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllHowDidYouKnowUS" FunctionName="ALKPowerModel.Store.usp_SelectAllHowDidYouKnowUS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllHowDidYouKnowUS_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HowDidYouUS" ColumnName="HowDidYouUS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllHowDidYouKnowUSByID" FunctionName="ALKPowerModel.Store.usp_SelectAllHowDidYouKnowUSByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllHowDidYouKnowUSByID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HowDidYouUS" ColumnName="HowDidYouUS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllOrdersByID" FunctionName="ALKPowerModel.Store.usp_SelectAllOrdersByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllOrdersByID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StatusOrder" ColumnName="StatusOrder" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllServices" FunctionName="ALKPowerModel.Store.usp_SelectAllServices">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllServices_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Services" ColumnName="Services" />
+                <ScalarProperty Name="ServicesFees" ColumnName="ServicesFees" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllServicesByID" FunctionName="ALKPowerModel.Store.usp_SelectAllServicesByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllServicesByID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Services" ColumnName="Services" />
+                <ScalarProperty Name="ServicesFees" ColumnName="ServicesFees" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAllStatus" FunctionName="ALKPowerModel.Store.usp_SelectAllStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllStatus_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StatusOrder" ColumnName="StatusOrder" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectAreaByCityID" FunctionName="ALKPowerModel.Store.usp_SelectAreaByCityID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAreaByCityID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectBranchesByCityID" FunctionName="ALKPowerModel.Store.usp_SelectBranchesByCityID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectBranchesByCityID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectClientCarByClient" FunctionName="ALKPowerModel.Store.usp_SelectClientCarByClient">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectClientCarByClient_Result">
                 <ScalarProperty Name="CarModel" ColumnName="CarModel" />
                 <ScalarProperty Name="MotorCap" ColumnName="MotorCap" />
                 <ScalarProperty Name="Man_Year" ColumnName="Man_Year" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectMaxClientID" FunctionName="ALK_PowerModel.Store.usp_SelectMaxClientID" />
-          <FunctionImportMapping FunctionImportName="usp_DeleteAllClient_CarsByID" FunctionName="ALK_PowerModel.Store.usp_DeleteAllClient_CarsByID" />
-          <FunctionImportMapping FunctionImportName="usp_InsertNewClient_Car" FunctionName="ALK_PowerModel.Store.usp_InsertNewClient_Car" />
-          <FunctionImportMapping FunctionImportName="usp_SelectAllClient_Cars" FunctionName="ALK_PowerModel.Store.usp_SelectAllClient_Cars">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllClient_Cars_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CLientID" ColumnName="CLientID" />
                 <ScalarProperty Name="CarID" ColumnName="CarID" />
                 <ScalarProperty Name="CarNo" ColumnName="CarNo" />
-                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
                 <ScalarProperty Name="KM" ColumnName="KM" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllClient_CarsByID" FunctionName="ALK_PowerModel.Store.usp_SelectAllClient_CarsByID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllClient_CarsByID_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CLientID" ColumnName="CLientID" />
-                <ScalarProperty Name="CarID" ColumnName="CarID" />
-                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
-                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
-                <ScalarProperty Name="KM" ColumnName="KM" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_UpdateNewClient_Car" FunctionName="ALK_PowerModel.Store.usp_UpdateNewClient_Car" />
-          <FunctionImportMapping FunctionImportName="usp_SelectClientCarByClient" FunctionName="ALK_PowerModel.Store.usp_SelectClientCarByClient">
+          <FunctionImportMapping FunctionImportName="usp_SelectMaxClientID" FunctionName="ALKPowerModel.Store.usp_SelectMaxClientID" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateBrandsByID" FunctionName="ALKPowerModel.Store.usp_UpdateBrandsByID" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateCarsByID" FunctionName="ALKPowerModel.Store.usp_UpdateCarsByID" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateNewArea" FunctionName="ALKPowerModel.Store.usp_UpdateNewArea" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateNewBranches" FunctionName="ALKPowerModel.Store.usp_UpdateNewBranches" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateNewCity" FunctionName="ALKPowerModel.Store.usp_UpdateNewCity" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateNewClient" FunctionName="ALKPowerModel.Store.usp_UpdateNewClient" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateNewClient_Car" FunctionName="ALKPowerModel.Store.usp_UpdateNewClient_Car" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateNewClient_Category" FunctionName="ALKPowerModel.Store.usp_UpdateNewClient_Category" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateNewColors" FunctionName="ALKPowerModel.Store.usp_UpdateNewColors" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateNewHowDidYouKnowUS" FunctionName="ALKPowerModel.Store.usp_UpdateNewHowDidYouKnowUS" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateNewServices" FunctionName="ALKPowerModel.Store.usp_UpdateNewServices" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateOrderStatus" FunctionName="ALKPowerModel.Store.usp_UpdateOrderStatus" />
+          <FunctionImportMapping FunctionImportName="usp_SelectAllClientsByMobil" FunctionName="ALKPowerModel.Store.usp_SelectAllClientsByMobil">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectClientCarByClient_Result">
-                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
-                <ScalarProperty Name="MotorCap" ColumnName="MotorCap" />
-                <ScalarProperty Name="Man_Year" ColumnName="Man_Year" />
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllClientsByMobil_Result">
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
+                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
                 <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="CarLetters" ColumnName="CarLetters" />
                 <ScalarProperty Name="KM" ColumnName="KM" />
-                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="CC" ColumnName="CC" />
+                <ScalarProperty Name="V" ColumnName="V" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByAreaID" FunctionName="ALK_PowerModel.Store.usp_FilterAllClientsByAreaID">
+          <FunctionImportMapping FunctionImportName="usp_SelectAllClientsCar" FunctionName="ALKPowerModel.Store.usp_SelectAllClientsCar">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_FilterAllClientsByAreaID_Result">
+              <ComplexTypeMapping TypeName="ALKPowerModel.usp_SelectAllClientsCar_Result">
                 <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
                 <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
                 <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="BranchName" ColumnName="BranchName" />
                 <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="CarLetters" ColumnName="CarLetters" />
+                <ScalarProperty Name="KM" ColumnName="KM" />
+                <ScalarProperty Name="CC" ColumnName="CC" />
+                <ScalarProperty Name="V" ColumnName="V" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsBybranchID" FunctionName="ALK_PowerModel.Store.usp_FilterAllClientsBybranchID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_FilterAllClientsBybranchID_Result">
-                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
-                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
-                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByCatID" FunctionName="ALK_PowerModel.Store.usp_FilterAllClientsByCatID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_FilterAllClientsByCatID_Result">
-                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
-                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
-                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByCityID" FunctionName="ALK_PowerModel.Store.usp_FilterAllClientsByCityID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_FilterAllClientsByCityID_Result">
-                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
-                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
-                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByHOWID" FunctionName="ALK_PowerModel.Store.usp_FilterAllClientsByHOWID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_FilterAllClientsByHOWID_Result">
-                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
-                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
-                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_FilterAllClientsByID" FunctionName="ALK_PowerModel.Store.usp_FilterAllClientsByID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_FilterAllClientsByID_Result">
-                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
-                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
-                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectAllClientsByName" FunctionName="ALK_PowerModel.Store.usp_SelectAllClientsByName">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ALK_PowerModel.usp_SelectAllClientsByName_Result">
-                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
-                <ScalarProperty Name="Client_Mobil" ColumnName="Client_Mobil" />
-                <ScalarProperty Name="Client_WhatusApp" ColumnName="Client_WhatusApp" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
-                <ScalarProperty Name="Client_Category" ColumnName="Client_Category" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_InsertNewOrder" FunctionName="ALKPowerModel.Store.usp_InsertNewOrder" />
+          <FunctionImportMapping FunctionImportName="usp_UpdateNewOrder" FunctionName="ALKPowerModel.Store.usp_UpdateNewOrder" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

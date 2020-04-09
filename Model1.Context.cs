@@ -15,10 +15,10 @@ namespace ELK_POWER
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class ALK_PowerEntities : DbContext
+    public partial class ALKPowerEntities : DbContext
     {
-        public ALK_PowerEntities()
-            : base("name=ALK_PowerEntities")
+        public ALKPowerEntities()
+            : base("name=ALKPowerEntities")
         {
         }
     
@@ -28,107 +28,22 @@ namespace ELK_POWER
         }
     
     
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        public virtual int usp_DeleteAllAreaByID(Nullable<int> iD)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllAreaByID", iDParameter);
         }
     
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        public virtual int usp_DeleteAllBranchesByID(Nullable<int> iD)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllBranchesByID", iDParameter);
         }
     
         public virtual int usp_DeleteAllBrandsByID(Nullable<int> id)
@@ -140,42 +55,6 @@ namespace ELK_POWER
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllBrandsByID", idParameter);
         }
     
-        public virtual int usp_InsertBrandsByID(string brandName)
-        {
-            var brandNameParameter = brandName != null ?
-                new ObjectParameter("BrandName", brandName) :
-                new ObjectParameter("BrandName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertBrandsByID", brandNameParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectAllBrand_Result> usp_SelectAllBrand()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllBrand_Result>("usp_SelectAllBrand");
-        }
-    
-        public virtual ObjectResult<usp_SelectAllBrandsByID_Result> usp_SelectAllBrandsByID(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllBrandsByID_Result>("usp_SelectAllBrandsByID", idParameter);
-        }
-    
-        public virtual int usp_UpdateBrandsByID(string brandName, Nullable<int> id)
-        {
-            var brandNameParameter = brandName != null ?
-                new ObjectParameter("BrandName", brandName) :
-                new ObjectParameter("BrandName", typeof(string));
-    
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateBrandsByID", brandNameParameter, idParameter);
-        }
-    
         public virtual int usp_DeleteAllCarsByID(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
@@ -183,6 +62,159 @@ namespace ELK_POWER
                 new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllCarsByID", idParameter);
+        }
+    
+        public virtual int usp_DeleteAllCityByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllCityByID", iDParameter);
+        }
+    
+        public virtual int usp_DeleteAllClient_CarsByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllClient_CarsByID", iDParameter);
+        }
+    
+        public virtual int usp_DeleteAllClient_CategoryByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllClient_CategoryByID", iDParameter);
+        }
+    
+        public virtual int usp_DeleteAllClientsByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllClientsByID", iDParameter);
+        }
+    
+        public virtual int usp_DeleteAllColorsByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllColorsByID", iDParameter);
+        }
+    
+        public virtual int usp_DeleteAllHowDidYouKnowUSByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllHowDidYouKnowUSByID", iDParameter);
+        }
+    
+        public virtual int usp_DeleteAllServicesByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllServicesByID", iDParameter);
+        }
+    
+        public virtual int usp_DeleteOrder(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteOrder", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_FilterAllClientsByAreaID_Result> usp_FilterAllClientsByAreaID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByAreaID_Result>("usp_FilterAllClientsByAreaID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_FilterAllClientsBybranchID_Result> usp_FilterAllClientsBybranchID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsBybranchID_Result>("usp_FilterAllClientsBybranchID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_FilterAllClientsBybRANDID_Result> usp_FilterAllClientsBybRANDID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsBybRANDID_Result>("usp_FilterAllClientsBybRANDID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_FilterAllClientsByCarID_Result> usp_FilterAllClientsByCarID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByCarID_Result>("usp_FilterAllClientsByCarID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_FilterAllClientsByCatID_Result> usp_FilterAllClientsByCatID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByCatID_Result>("usp_FilterAllClientsByCatID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_FilterAllClientsByCityID_Result> usp_FilterAllClientsByCityID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByCityID_Result>("usp_FilterAllClientsByCityID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_FilterAllClientsByHOWID_Result> usp_FilterAllClientsByHOWID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByHOWID_Result>("usp_FilterAllClientsByHOWID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_FilterAllClientsByID_Result> usp_FilterAllClientsByID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByID_Result>("usp_FilterAllClientsByID", idParameter);
+        }
+    
+        public virtual int usp_InsertBrandsByID(string brandName)
+        {
+            var brandNameParameter = brandName != null ?
+                new ObjectParameter("BrandName", brandName) :
+                new ObjectParameter("BrandName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertBrandsByID", brandNameParameter);
         }
     
         public virtual int usp_InsertCarsByID(string carModel, Nullable<int> brandID, string motorCap, string man_Year)
@@ -206,99 +238,6 @@ namespace ELK_POWER
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertCarsByID", carModelParameter, brandIDParameter, motorCapParameter, man_YearParameter);
         }
     
-        public virtual ObjectResult<usp_SelectAllCars_Result> usp_SelectAllCars()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllCars_Result>("usp_SelectAllCars");
-        }
-    
-        public virtual ObjectResult<usp_SelectAllCarsByID_Result> usp_SelectAllCarsByID(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllCarsByID_Result>("usp_SelectAllCarsByID", idParameter);
-        }
-    
-        public virtual int usp_UpdateCarsByID(string carModel, Nullable<int> brandID, string motorCap, string man_Year, Nullable<int> id)
-        {
-            var carModelParameter = carModel != null ?
-                new ObjectParameter("CarModel", carModel) :
-                new ObjectParameter("CarModel", typeof(string));
-    
-            var brandIDParameter = brandID.HasValue ?
-                new ObjectParameter("BrandID", brandID) :
-                new ObjectParameter("BrandID", typeof(int));
-    
-            var motorCapParameter = motorCap != null ?
-                new ObjectParameter("MotorCap", motorCap) :
-                new ObjectParameter("MotorCap", typeof(string));
-    
-            var man_YearParameter = man_Year != null ?
-                new ObjectParameter("Man_Year", man_Year) :
-                new ObjectParameter("Man_Year", typeof(string));
-    
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateCarsByID", carModelParameter, brandIDParameter, motorCapParameter, man_YearParameter, idParameter);
-        }
-    
-        public virtual int usp_DeleteAllCityByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllCityByID", iDParameter);
-        }
-    
-        public virtual int usp_InsertNewCity(string cityName)
-        {
-            var cityNameParameter = cityName != null ?
-                new ObjectParameter("CityName", cityName) :
-                new ObjectParameter("CityName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewCity", cityNameParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectAllCity_Result> usp_SelectAllCity()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllCity_Result>("usp_SelectAllCity");
-        }
-    
-        public virtual ObjectResult<usp_SelectAllCityByID_Result> usp_SelectAllCityByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllCityByID_Result>("usp_SelectAllCityByID", iDParameter);
-        }
-    
-        public virtual int usp_UpdateNewCity(string cityName, Nullable<int> id)
-        {
-            var cityNameParameter = cityName != null ?
-                new ObjectParameter("CityName", cityName) :
-                new ObjectParameter("CityName", typeof(string));
-    
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewCity", cityNameParameter, idParameter);
-        }
-    
-        public virtual int usp_DeleteAllAreaByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllAreaByID", iDParameter);
-        }
-    
         public virtual int usp_InsertNewArea(string areaName, Nullable<int> cityID)
         {
             var areaNameParameter = areaName != null ?
@@ -310,46 +249,6 @@ namespace ELK_POWER
                 new ObjectParameter("cityID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewArea", areaNameParameter, cityIDParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectAllArea_Result> usp_SelectAllArea()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllArea_Result>("usp_SelectAllArea");
-        }
-    
-        public virtual ObjectResult<usp_SelectAllAreaByID_Result> usp_SelectAllAreaByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllAreaByID_Result>("usp_SelectAllAreaByID", iDParameter);
-        }
-    
-        public virtual int usp_UpdateNewArea(string areaName, Nullable<int> cityID, Nullable<int> id)
-        {
-            var areaNameParameter = areaName != null ?
-                new ObjectParameter("AreaName", areaName) :
-                new ObjectParameter("AreaName", typeof(string));
-    
-            var cityIDParameter = cityID.HasValue ?
-                new ObjectParameter("cityID", cityID) :
-                new ObjectParameter("cityID", typeof(int));
-    
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewArea", areaNameParameter, cityIDParameter, idParameter);
-        }
-    
-        public virtual int usp_DeleteAllBranchesByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllBranchesByID", iDParameter);
         }
     
         public virtual int usp_InsertNewBranches(string branchesName, Nullable<int> areaID)
@@ -365,258 +264,13 @@ namespace ELK_POWER
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewBranches", branchesNameParameter, areaIDParameter);
         }
     
-        public virtual ObjectResult<usp_SelectAllBranches_Result> usp_SelectAllBranches()
+        public virtual int usp_InsertNewCity(string cityName)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllBranches_Result>("usp_SelectAllBranches");
-        }
+            var cityNameParameter = cityName != null ?
+                new ObjectParameter("CityName", cityName) :
+                new ObjectParameter("CityName", typeof(string));
     
-        public virtual ObjectResult<usp_SelectAllBranchesByID_Result> usp_SelectAllBranchesByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllBranchesByID_Result>("usp_SelectAllBranchesByID", iDParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectAreaByCityID_Result> usp_SelectAreaByCityID(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAreaByCityID_Result>("usp_SelectAreaByCityID", idParameter);
-        }
-    
-        public virtual int usp_UpdateNewBranches(string branchesName, Nullable<int> areaID, Nullable<int> id)
-        {
-            var branchesNameParameter = branchesName != null ?
-                new ObjectParameter("BranchesName", branchesName) :
-                new ObjectParameter("BranchesName", typeof(string));
-    
-            var areaIDParameter = areaID.HasValue ?
-                new ObjectParameter("AreaID", areaID) :
-                new ObjectParameter("AreaID", typeof(int));
-    
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewBranches", branchesNameParameter, areaIDParameter, idParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectBranchesByCityID_Result> usp_SelectBranchesByCityID(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectBranchesByCityID_Result>("usp_SelectBranchesByCityID", idParameter);
-        }
-    
-        public virtual int usp_DeleteAllColorsByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllColorsByID", iDParameter);
-        }
-    
-        public virtual int usp_InsertNewColors(string colorsName, Nullable<int> areaID)
-        {
-            var colorsNameParameter = colorsName != null ?
-                new ObjectParameter("ColorsName", colorsName) :
-                new ObjectParameter("ColorsName", typeof(string));
-    
-            var areaIDParameter = areaID.HasValue ?
-                new ObjectParameter("AreaID", areaID) :
-                new ObjectParameter("AreaID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewColors", colorsNameParameter, areaIDParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectAllColors_Result> usp_SelectAllColors()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllColors_Result>("usp_SelectAllColors");
-        }
-    
-        public virtual ObjectResult<usp_SelectAllColorsByID_Result> usp_SelectAllColorsByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllColorsByID_Result>("usp_SelectAllColorsByID", iDParameter);
-        }
-    
-        public virtual int usp_UpdateNewColors(string colorsName, Nullable<int> id)
-        {
-            var colorsNameParameter = colorsName != null ?
-                new ObjectParameter("ColorsName", colorsName) :
-                new ObjectParameter("ColorsName", typeof(string));
-    
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewColors", colorsNameParameter, idParameter);
-        }
-    
-        public virtual int usp_DeleteAllHowDidYouKnowUSByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllHowDidYouKnowUSByID", iDParameter);
-        }
-    
-        public virtual int usp_InsertNewHowDidYouKnowUS(string howDidYouKnowUSName, Nullable<int> areaID)
-        {
-            var howDidYouKnowUSNameParameter = howDidYouKnowUSName != null ?
-                new ObjectParameter("HowDidYouKnowUSName", howDidYouKnowUSName) :
-                new ObjectParameter("HowDidYouKnowUSName", typeof(string));
-    
-            var areaIDParameter = areaID.HasValue ?
-                new ObjectParameter("AreaID", areaID) :
-                new ObjectParameter("AreaID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewHowDidYouKnowUS", howDidYouKnowUSNameParameter, areaIDParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectAllHowDidYouKnowUS_Result> usp_SelectAllHowDidYouKnowUS()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllHowDidYouKnowUS_Result>("usp_SelectAllHowDidYouKnowUS");
-        }
-    
-        public virtual ObjectResult<usp_SelectAllHowDidYouKnowUSByID_Result> usp_SelectAllHowDidYouKnowUSByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllHowDidYouKnowUSByID_Result>("usp_SelectAllHowDidYouKnowUSByID", iDParameter);
-        }
-    
-        public virtual int usp_UpdateNewHowDidYouKnowUS(string howDidYouKnowUSName, Nullable<int> id)
-        {
-            var howDidYouKnowUSNameParameter = howDidYouKnowUSName != null ?
-                new ObjectParameter("HowDidYouKnowUSName", howDidYouKnowUSName) :
-                new ObjectParameter("HowDidYouKnowUSName", typeof(string));
-    
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewHowDidYouKnowUS", howDidYouKnowUSNameParameter, idParameter);
-        }
-    
-        public virtual int usp_DeleteAllServicesByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllServicesByID", iDParameter);
-        }
-    
-        public virtual int usp_InsertNewServices(string servicesName, Nullable<decimal> fees)
-        {
-            var servicesNameParameter = servicesName != null ?
-                new ObjectParameter("ServicesName", servicesName) :
-                new ObjectParameter("ServicesName", typeof(string));
-    
-            var feesParameter = fees.HasValue ?
-                new ObjectParameter("fees", fees) :
-                new ObjectParameter("fees", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewServices", servicesNameParameter, feesParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectAllServices_Result> usp_SelectAllServices()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllServices_Result>("usp_SelectAllServices");
-        }
-    
-        public virtual ObjectResult<usp_SelectAllServicesByID_Result> usp_SelectAllServicesByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllServicesByID_Result>("usp_SelectAllServicesByID", iDParameter);
-        }
-    
-        public virtual int usp_UpdateNewServices(string servicesName, Nullable<decimal> fees, Nullable<int> id)
-        {
-            var servicesNameParameter = servicesName != null ?
-                new ObjectParameter("ServicesName", servicesName) :
-                new ObjectParameter("ServicesName", typeof(string));
-    
-            var feesParameter = fees.HasValue ?
-                new ObjectParameter("fees", fees) :
-                new ObjectParameter("fees", typeof(decimal));
-    
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewServices", servicesNameParameter, feesParameter, idParameter);
-        }
-    
-        public virtual int usp_DeleteAllClient_CategoryByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllClient_CategoryByID", iDParameter);
-        }
-    
-        public virtual int usp_InsertNewClient_Category(string client_CategoryName)
-        {
-            var client_CategoryNameParameter = client_CategoryName != null ?
-                new ObjectParameter("Client_CategoryName", client_CategoryName) :
-                new ObjectParameter("Client_CategoryName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewClient_Category", client_CategoryNameParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectAllClient_Category_Result> usp_SelectAllClient_Category()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClient_Category_Result>("usp_SelectAllClient_Category");
-        }
-    
-        public virtual ObjectResult<usp_SelectAllClient_CategoryByID_Result> usp_SelectAllClient_CategoryByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClient_CategoryByID_Result>("usp_SelectAllClient_CategoryByID", iDParameter);
-        }
-    
-        public virtual int usp_UpdateNewClient_Category(string client_CategoryName, Nullable<int> id)
-        {
-            var client_CategoryNameParameter = client_CategoryName != null ?
-                new ObjectParameter("Client_CategoryName", client_CategoryName) :
-                new ObjectParameter("Client_CategoryName", typeof(string));
-    
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewClient_Category", client_CategoryNameParameter, idParameter);
-        }
-    
-        public virtual int usp_DeleteAllClientsByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllClientsByID", iDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewCity", cityNameParameter);
         }
     
         public virtual int usp_InsertNewClient(string client_Name, string client_Mobil, string client_WhatusApp, Nullable<int> clientAreaID, Nullable<int> client_CatID, Nullable<int> howDidYouKnowus, Nullable<int> branchID)
@@ -652,6 +306,203 @@ namespace ELK_POWER
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewClient", client_NameParameter, client_MobilParameter, client_WhatusAppParameter, clientAreaIDParameter, client_CatIDParameter, howDidYouKnowusParameter, branchIDParameter);
         }
     
+        public virtual int usp_InsertNewClient_Car(Nullable<int> cLientID, Nullable<int> carID, string carNo, Nullable<int> colorID, string kM, string cC, string v)
+        {
+            var cLientIDParameter = cLientID.HasValue ?
+                new ObjectParameter("CLientID", cLientID) :
+                new ObjectParameter("CLientID", typeof(int));
+    
+            var carIDParameter = carID.HasValue ?
+                new ObjectParameter("CarID", carID) :
+                new ObjectParameter("CarID", typeof(int));
+    
+            var carNoParameter = carNo != null ?
+                new ObjectParameter("CarNo", carNo) :
+                new ObjectParameter("CarNo", typeof(string));
+    
+            var colorIDParameter = colorID.HasValue ?
+                new ObjectParameter("ColorID", colorID) :
+                new ObjectParameter("ColorID", typeof(int));
+    
+            var kMParameter = kM != null ?
+                new ObjectParameter("KM", kM) :
+                new ObjectParameter("KM", typeof(string));
+    
+            var cCParameter = cC != null ?
+                new ObjectParameter("CC", cC) :
+                new ObjectParameter("CC", typeof(string));
+    
+            var vParameter = v != null ?
+                new ObjectParameter("v", v) :
+                new ObjectParameter("v", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewClient_Car", cLientIDParameter, carIDParameter, carNoParameter, colorIDParameter, kMParameter, cCParameter, vParameter);
+        }
+    
+        public virtual int usp_InsertNewClient_Category(string client_CategoryName)
+        {
+            var client_CategoryNameParameter = client_CategoryName != null ?
+                new ObjectParameter("Client_CategoryName", client_CategoryName) :
+                new ObjectParameter("Client_CategoryName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewClient_Category", client_CategoryNameParameter);
+        }
+    
+        public virtual int usp_InsertNewColors(string colorsName, Nullable<int> areaID)
+        {
+            var colorsNameParameter = colorsName != null ?
+                new ObjectParameter("ColorsName", colorsName) :
+                new ObjectParameter("ColorsName", typeof(string));
+    
+            var areaIDParameter = areaID.HasValue ?
+                new ObjectParameter("AreaID", areaID) :
+                new ObjectParameter("AreaID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewColors", colorsNameParameter, areaIDParameter);
+        }
+    
+        public virtual int usp_InsertNewHowDidYouKnowUS(string howDidYouKnowUSName, Nullable<int> areaID)
+        {
+            var howDidYouKnowUSNameParameter = howDidYouKnowUSName != null ?
+                new ObjectParameter("HowDidYouKnowUSName", howDidYouKnowUSName) :
+                new ObjectParameter("HowDidYouKnowUSName", typeof(string));
+    
+            var areaIDParameter = areaID.HasValue ?
+                new ObjectParameter("AreaID", areaID) :
+                new ObjectParameter("AreaID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewHowDidYouKnowUS", howDidYouKnowUSNameParameter, areaIDParameter);
+        }
+    
+        public virtual int usp_InsertNewServices(string servicesName, Nullable<decimal> fees)
+        {
+            var servicesNameParameter = servicesName != null ?
+                new ObjectParameter("ServicesName", servicesName) :
+                new ObjectParameter("ServicesName", typeof(string));
+    
+            var feesParameter = fees.HasValue ?
+                new ObjectParameter("fees", fees) :
+                new ObjectParameter("fees", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewServices", servicesNameParameter, feesParameter);
+        }
+    
+        public virtual int usp_InsertORderStus(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertORderStus", nameParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllArea_Result> usp_SelectAllArea()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllArea_Result>("usp_SelectAllArea");
+        }
+    
+        public virtual ObjectResult<usp_SelectAllAreaByID_Result> usp_SelectAllAreaByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllAreaByID_Result>("usp_SelectAllAreaByID", iDParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllBranches_Result> usp_SelectAllBranches()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllBranches_Result>("usp_SelectAllBranches");
+        }
+    
+        public virtual ObjectResult<usp_SelectAllBranchesByID_Result> usp_SelectAllBranchesByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllBranchesByID_Result>("usp_SelectAllBranchesByID", iDParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllBrand_Result> usp_SelectAllBrand()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllBrand_Result>("usp_SelectAllBrand");
+        }
+    
+        public virtual ObjectResult<usp_SelectAllBrandsByID_Result> usp_SelectAllBrandsByID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllBrandsByID_Result>("usp_SelectAllBrandsByID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllCars_Result> usp_SelectAllCars()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllCars_Result>("usp_SelectAllCars");
+        }
+    
+        public virtual ObjectResult<usp_SelectAllCarsByBrandID_Result> usp_SelectAllCarsByBrandID(Nullable<int> brandID)
+        {
+            var brandIDParameter = brandID.HasValue ?
+                new ObjectParameter("brandID", brandID) :
+                new ObjectParameter("brandID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllCarsByBrandID_Result>("usp_SelectAllCarsByBrandID", brandIDParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllCarsByID_Result> usp_SelectAllCarsByID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllCarsByID_Result>("usp_SelectAllCarsByID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllCity_Result> usp_SelectAllCity()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllCity_Result>("usp_SelectAllCity");
+        }
+    
+        public virtual ObjectResult<usp_SelectAllCityByID_Result> usp_SelectAllCityByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllCityByID_Result>("usp_SelectAllCityByID", iDParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllClient_Cars_Result> usp_SelectAllClient_Cars()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClient_Cars_Result>("usp_SelectAllClient_Cars");
+        }
+    
+        public virtual ObjectResult<usp_SelectAllClient_CarsByID_Result> usp_SelectAllClient_CarsByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClient_CarsByID_Result>("usp_SelectAllClient_CarsByID", iDParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllClient_Category_Result> usp_SelectAllClient_Category()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClient_Category_Result>("usp_SelectAllClient_Category");
+        }
+    
+        public virtual ObjectResult<usp_SelectAllClient_CategoryByID_Result> usp_SelectAllClient_CategoryByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClient_CategoryByID_Result>("usp_SelectAllClient_CategoryByID", iDParameter);
+        }
+    
         public virtual ObjectResult<usp_SelectAllClients_Result> usp_SelectAllClients()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClients_Result>("usp_SelectAllClients");
@@ -664,6 +515,188 @@ namespace ELK_POWER
                 new ObjectParameter("ID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClientsByID_Result>("usp_SelectAllClientsByID", iDParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllClientsByName_Result> usp_SelectAllClientsByName(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClientsByName_Result>("usp_SelectAllClientsByName", nameParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllColors_Result> usp_SelectAllColors()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllColors_Result>("usp_SelectAllColors");
+        }
+    
+        public virtual ObjectResult<usp_SelectAllColorsByID_Result> usp_SelectAllColorsByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllColorsByID_Result>("usp_SelectAllColorsByID", iDParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllHowDidYouKnowUS_Result> usp_SelectAllHowDidYouKnowUS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllHowDidYouKnowUS_Result>("usp_SelectAllHowDidYouKnowUS");
+        }
+    
+        public virtual ObjectResult<usp_SelectAllHowDidYouKnowUSByID_Result> usp_SelectAllHowDidYouKnowUSByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllHowDidYouKnowUSByID_Result>("usp_SelectAllHowDidYouKnowUSByID", iDParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllOrdersByID_Result> usp_SelectAllOrdersByID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllOrdersByID_Result>("usp_SelectAllOrdersByID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllServices_Result> usp_SelectAllServices()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllServices_Result>("usp_SelectAllServices");
+        }
+    
+        public virtual ObjectResult<usp_SelectAllServicesByID_Result> usp_SelectAllServicesByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllServicesByID_Result>("usp_SelectAllServicesByID", iDParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllStatus_Result> usp_SelectAllStatus()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllStatus_Result>("usp_SelectAllStatus");
+        }
+    
+        public virtual ObjectResult<usp_SelectAreaByCityID_Result> usp_SelectAreaByCityID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAreaByCityID_Result>("usp_SelectAreaByCityID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectBranchesByCityID_Result> usp_SelectBranchesByCityID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectBranchesByCityID_Result>("usp_SelectBranchesByCityID", idParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectClientCarByClient_Result> usp_SelectClientCarByClient(Nullable<int> clientID)
+        {
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("clientID", clientID) :
+                new ObjectParameter("clientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectClientCarByClient_Result>("usp_SelectClientCarByClient", clientIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> usp_SelectMaxClientID()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_SelectMaxClientID");
+        }
+    
+        public virtual int usp_UpdateBrandsByID(string brandName, Nullable<int> id)
+        {
+            var brandNameParameter = brandName != null ?
+                new ObjectParameter("BrandName", brandName) :
+                new ObjectParameter("BrandName", typeof(string));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateBrandsByID", brandNameParameter, idParameter);
+        }
+    
+        public virtual int usp_UpdateCarsByID(string carModel, Nullable<int> brandID, string motorCap, string man_Year, Nullable<int> id)
+        {
+            var carModelParameter = carModel != null ?
+                new ObjectParameter("CarModel", carModel) :
+                new ObjectParameter("CarModel", typeof(string));
+    
+            var brandIDParameter = brandID.HasValue ?
+                new ObjectParameter("BrandID", brandID) :
+                new ObjectParameter("BrandID", typeof(int));
+    
+            var motorCapParameter = motorCap != null ?
+                new ObjectParameter("MotorCap", motorCap) :
+                new ObjectParameter("MotorCap", typeof(string));
+    
+            var man_YearParameter = man_Year != null ?
+                new ObjectParameter("Man_Year", man_Year) :
+                new ObjectParameter("Man_Year", typeof(string));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateCarsByID", carModelParameter, brandIDParameter, motorCapParameter, man_YearParameter, idParameter);
+        }
+    
+        public virtual int usp_UpdateNewArea(string areaName, Nullable<int> cityID, Nullable<int> id)
+        {
+            var areaNameParameter = areaName != null ?
+                new ObjectParameter("AreaName", areaName) :
+                new ObjectParameter("AreaName", typeof(string));
+    
+            var cityIDParameter = cityID.HasValue ?
+                new ObjectParameter("cityID", cityID) :
+                new ObjectParameter("cityID", typeof(int));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewArea", areaNameParameter, cityIDParameter, idParameter);
+        }
+    
+        public virtual int usp_UpdateNewBranches(string branchesName, Nullable<int> areaID, Nullable<int> id)
+        {
+            var branchesNameParameter = branchesName != null ?
+                new ObjectParameter("BranchesName", branchesName) :
+                new ObjectParameter("BranchesName", typeof(string));
+    
+            var areaIDParameter = areaID.HasValue ?
+                new ObjectParameter("AreaID", areaID) :
+                new ObjectParameter("AreaID", typeof(int));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewBranches", branchesNameParameter, areaIDParameter, idParameter);
+        }
+    
+        public virtual int usp_UpdateNewCity(string cityName, Nullable<int> id)
+        {
+            var cityNameParameter = cityName != null ?
+                new ObjectParameter("CityName", cityName) :
+                new ObjectParameter("CityName", typeof(string));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewCity", cityNameParameter, idParameter);
         }
     
         public virtual int usp_UpdateNewClient(string client_Name, string client_Mobil, string client_WhatusApp, Nullable<int> clientAreaID, Nullable<int> client_CatID, Nullable<int> howDidYouKnowus, Nullable<int> branchID, Nullable<int> id)
@@ -703,69 +736,7 @@ namespace ELK_POWER
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewClient", client_NameParameter, client_MobilParameter, client_WhatusAppParameter, clientAreaIDParameter, client_CatIDParameter, howDidYouKnowusParameter, branchIDParameter, idParameter);
         }
     
-        public virtual ObjectResult<usp_SelectAllCarsByBrandID_Result> usp_SelectAllCarsByBrandID(Nullable<int> brandID)
-        {
-            var brandIDParameter = brandID.HasValue ?
-                new ObjectParameter("brandID", brandID) :
-                new ObjectParameter("brandID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllCarsByBrandID_Result>("usp_SelectAllCarsByBrandID", brandIDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> usp_SelectMaxClientID()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_SelectMaxClientID");
-        }
-    
-        public virtual int usp_DeleteAllClient_CarsByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_DeleteAllClient_CarsByID", iDParameter);
-        }
-    
-        public virtual int usp_InsertNewClient_Car(Nullable<int> cLientID, Nullable<int> carID, string carNo, Nullable<int> colorID, string kM)
-        {
-            var cLientIDParameter = cLientID.HasValue ?
-                new ObjectParameter("CLientID", cLientID) :
-                new ObjectParameter("CLientID", typeof(int));
-    
-            var carIDParameter = carID.HasValue ?
-                new ObjectParameter("CarID", carID) :
-                new ObjectParameter("CarID", typeof(int));
-    
-            var carNoParameter = carNo != null ?
-                new ObjectParameter("CarNo", carNo) :
-                new ObjectParameter("CarNo", typeof(string));
-    
-            var colorIDParameter = colorID.HasValue ?
-                new ObjectParameter("ColorID", colorID) :
-                new ObjectParameter("ColorID", typeof(int));
-    
-            var kMParameter = kM != null ?
-                new ObjectParameter("KM", kM) :
-                new ObjectParameter("KM", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewClient_Car", cLientIDParameter, carIDParameter, carNoParameter, colorIDParameter, kMParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectAllClient_Cars_Result> usp_SelectAllClient_Cars()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClient_Cars_Result>("usp_SelectAllClient_Cars");
-        }
-    
-        public virtual ObjectResult<usp_SelectAllClient_CarsByID_Result> usp_SelectAllClient_CarsByID(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClient_CarsByID_Result>("usp_SelectAllClient_CarsByID", iDParameter);
-        }
-    
-        public virtual int usp_UpdateNewClient_Car(Nullable<int> cLientID, Nullable<int> carID, string carNo, Nullable<int> colorID, string kM, Nullable<int> id)
+        public virtual int usp_UpdateNewClient_Car(Nullable<int> cLientID, Nullable<int> carID, string carNo, Nullable<int> colorID, string kM, Nullable<int> id, string cC, string v)
         {
             var cLientIDParameter = cLientID.HasValue ?
                 new ObjectParameter("CLientID", cLientID) :
@@ -791,79 +762,176 @@ namespace ELK_POWER
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewClient_Car", cLientIDParameter, carIDParameter, carNoParameter, colorIDParameter, kMParameter, idParameter);
+            var cCParameter = cC != null ?
+                new ObjectParameter("CC", cC) :
+                new ObjectParameter("CC", typeof(string));
+    
+            var vParameter = v != null ?
+                new ObjectParameter("v", v) :
+                new ObjectParameter("v", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewClient_Car", cLientIDParameter, carIDParameter, carNoParameter, colorIDParameter, kMParameter, idParameter, cCParameter, vParameter);
         }
     
-        public virtual ObjectResult<usp_SelectClientCarByClient_Result> usp_SelectClientCarByClient(Nullable<int> clientID)
+        public virtual int usp_UpdateNewClient_Category(string client_CategoryName, Nullable<int> id)
         {
-            var clientIDParameter = clientID.HasValue ?
-                new ObjectParameter("clientID", clientID) :
-                new ObjectParameter("clientID", typeof(int));
+            var client_CategoryNameParameter = client_CategoryName != null ?
+                new ObjectParameter("Client_CategoryName", client_CategoryName) :
+                new ObjectParameter("Client_CategoryName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectClientCarByClient_Result>("usp_SelectClientCarByClient", clientIDParameter);
-        }
-    
-        public virtual ObjectResult<usp_FilterAllClientsByAreaID_Result> usp_FilterAllClientsByAreaID(Nullable<int> id)
-        {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByAreaID_Result>("usp_FilterAllClientsByAreaID", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewClient_Category", client_CategoryNameParameter, idParameter);
         }
     
-        public virtual ObjectResult<usp_FilterAllClientsBybranchID_Result> usp_FilterAllClientsBybranchID(Nullable<int> id)
+        public virtual int usp_UpdateNewColors(string colorsName, Nullable<int> id)
         {
+            var colorsNameParameter = colorsName != null ?
+                new ObjectParameter("ColorsName", colorsName) :
+                new ObjectParameter("ColorsName", typeof(string));
+    
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsBybranchID_Result>("usp_FilterAllClientsBybranchID", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewColors", colorsNameParameter, idParameter);
         }
     
-        public virtual ObjectResult<usp_FilterAllClientsByCatID_Result> usp_FilterAllClientsByCatID(Nullable<int> id)
+        public virtual int usp_UpdateNewHowDidYouKnowUS(string howDidYouKnowUSName, Nullable<int> id)
         {
+            var howDidYouKnowUSNameParameter = howDidYouKnowUSName != null ?
+                new ObjectParameter("HowDidYouKnowUSName", howDidYouKnowUSName) :
+                new ObjectParameter("HowDidYouKnowUSName", typeof(string));
+    
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByCatID_Result>("usp_FilterAllClientsByCatID", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewHowDidYouKnowUS", howDidYouKnowUSNameParameter, idParameter);
         }
     
-        public virtual ObjectResult<usp_FilterAllClientsByCityID_Result> usp_FilterAllClientsByCityID(Nullable<int> id)
+        public virtual int usp_UpdateNewServices(string servicesName, Nullable<decimal> fees, Nullable<int> id)
         {
+            var servicesNameParameter = servicesName != null ?
+                new ObjectParameter("ServicesName", servicesName) :
+                new ObjectParameter("ServicesName", typeof(string));
+    
+            var feesParameter = fees.HasValue ?
+                new ObjectParameter("fees", fees) :
+                new ObjectParameter("fees", typeof(decimal));
+    
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByCityID_Result>("usp_FilterAllClientsByCityID", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewServices", servicesNameParameter, feesParameter, idParameter);
         }
     
-        public virtual ObjectResult<usp_FilterAllClientsByHOWID_Result> usp_FilterAllClientsByHOWID(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByHOWID_Result>("usp_FilterAllClientsByHOWID", idParameter);
-        }
-    
-        public virtual ObjectResult<usp_FilterAllClientsByID_Result> usp_FilterAllClientsByID(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_FilterAllClientsByID_Result>("usp_FilterAllClientsByID", idParameter);
-        }
-    
-        public virtual ObjectResult<usp_SelectAllClientsByName_Result> usp_SelectAllClientsByName(string name)
+        public virtual int usp_UpdateOrderStatus(string name, Nullable<int> id)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
                 new ObjectParameter("name", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClientsByName_Result>("usp_SelectAllClientsByName", nameParameter);
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateOrderStatus", nameParameter, idParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllClientsByMobil_Result> usp_SelectAllClientsByMobil(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClientsByMobil_Result>("usp_SelectAllClientsByMobil", nameParameter);
+        }
+    
+        public virtual ObjectResult<usp_SelectAllClientsCar_Result> usp_SelectAllClientsCar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_SelectAllClientsCar_Result>("usp_SelectAllClientsCar");
+        }
+    
+        public virtual int usp_InsertNewOrder(Nullable<int> clientID, Nullable<int> orderStatusID, Nullable<System.DateTime> orderDate, Nullable<int> branchID, Nullable<decimal> totalOrder, Nullable<decimal> discount, Nullable<decimal> tax, Nullable<decimal> finalOrder)
+        {
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var orderStatusIDParameter = orderStatusID.HasValue ?
+                new ObjectParameter("OrderStatusID", orderStatusID) :
+                new ObjectParameter("OrderStatusID", typeof(int));
+    
+            var orderDateParameter = orderDate.HasValue ?
+                new ObjectParameter("OrderDate", orderDate) :
+                new ObjectParameter("OrderDate", typeof(System.DateTime));
+    
+            var branchIDParameter = branchID.HasValue ?
+                new ObjectParameter("BranchID", branchID) :
+                new ObjectParameter("BranchID", typeof(int));
+    
+            var totalOrderParameter = totalOrder.HasValue ?
+                new ObjectParameter("TotalOrder", totalOrder) :
+                new ObjectParameter("TotalOrder", typeof(decimal));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(decimal));
+    
+            var taxParameter = tax.HasValue ?
+                new ObjectParameter("Tax", tax) :
+                new ObjectParameter("Tax", typeof(decimal));
+    
+            var finalOrderParameter = finalOrder.HasValue ?
+                new ObjectParameter("FinalOrder", finalOrder) :
+                new ObjectParameter("FinalOrder", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertNewOrder", clientIDParameter, orderStatusIDParameter, orderDateParameter, branchIDParameter, totalOrderParameter, discountParameter, taxParameter, finalOrderParameter);
+        }
+    
+        public virtual int usp_UpdateNewOrder(Nullable<int> clientID, Nullable<int> orderStatusID, Nullable<System.DateTime> orderDate, Nullable<int> branchID, Nullable<decimal> totalOrder, Nullable<decimal> discount, Nullable<decimal> tax, Nullable<decimal> finalOrder, Nullable<int> id)
+        {
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("ClientID", clientID) :
+                new ObjectParameter("ClientID", typeof(int));
+    
+            var orderStatusIDParameter = orderStatusID.HasValue ?
+                new ObjectParameter("OrderStatusID", orderStatusID) :
+                new ObjectParameter("OrderStatusID", typeof(int));
+    
+            var orderDateParameter = orderDate.HasValue ?
+                new ObjectParameter("OrderDate", orderDate) :
+                new ObjectParameter("OrderDate", typeof(System.DateTime));
+    
+            var branchIDParameter = branchID.HasValue ?
+                new ObjectParameter("BranchID", branchID) :
+                new ObjectParameter("BranchID", typeof(int));
+    
+            var totalOrderParameter = totalOrder.HasValue ?
+                new ObjectParameter("TotalOrder", totalOrder) :
+                new ObjectParameter("TotalOrder", typeof(decimal));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(decimal));
+    
+            var taxParameter = tax.HasValue ?
+                new ObjectParameter("Tax", tax) :
+                new ObjectParameter("Tax", typeof(decimal));
+    
+            var finalOrderParameter = finalOrder.HasValue ?
+                new ObjectParameter("FinalOrder", finalOrder) :
+                new ObjectParameter("FinalOrder", typeof(decimal));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_UpdateNewOrder", clientIDParameter, orderStatusIDParameter, orderDateParameter, branchIDParameter, totalOrderParameter, discountParameter, taxParameter, finalOrderParameter, idParameter);
         }
     }
 }

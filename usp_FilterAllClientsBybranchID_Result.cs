@@ -19,5 +19,12 @@ namespace ELK_POWER
         public int ID { get; set; }
         public string BranchName { get; set; }
         public string Client_Category { get; set; }
+        public string BrandName { get; set; }
+        public string CarModel { get; set; }
+        public string CarNo { get; set; }
+        public string CarLetters { get; set; }
+        public string KM { get; set; }
+        public string CC { get; set; }
+        public string V { get; set; }
     }
 }

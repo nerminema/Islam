@@ -11,9 +11,13 @@ namespace ELK_POWER
 {
     using System;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class usp_FilterAllClientsBybRANDID_Result
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public string Client_Name { get; set; }
+        public string Client_Mobil { get; set; }
+        public string Client_WhatusApp { get; set; }
+        public int ID { get; set; }
+        public string BranchName { get; set; }
+        public string Client_Category { get; set; }
     }
 }

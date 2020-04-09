@@ -17,9 +17,9 @@ namespace ELK_POWER
         public string MotorCap { get; set; }
         public string Man_Year { get; set; }
         public string BrandName { get; set; }
-        public int ID { get; set; }
+        public Nullable<int> CarID { get; set; }
         public string CarNo { get; set; }
         public string KM { get; set; }
-        public Nullable<int> CarID { get; set; }
+        public int ID { get; set; }
     }
 }

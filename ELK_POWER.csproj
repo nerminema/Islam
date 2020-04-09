@@ -61,6 +61,15 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Collections">
+      <HintPath>..\..\..\Happy Baby\Happy Baby 3_12\Happy_Baby\Happy_Baby\bin\Debug\Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreConcept">
+      <HintPath>..\..\..\Core\3- Swimming Academy\30-6\Aqua\Happy Baby\bin\Debug\CoreConcept.dll</HintPath>
+    </Reference>
+    <Reference Include="CPrinting">
+      <HintPath>..\..\..\Core\3- Swimming Academy\30-6\Aqua\Happy Baby\bin\Debug\CPrinting.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -83,6 +92,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ALKPowerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ALKPowerDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Classes\AreaClass.cs" />
     <Compile Include="Classes\BranchesClass.cs" />
     <Compile Include="Classes\BrandsClass.cs" />
@@ -92,9 +106,13 @@
     <Compile Include="Classes\ClientCarClass.cs" />
     <Compile Include="Classes\ClientCategory.cs" />
     <Compile Include="Classes\ClientClass.cs" />
+    <Compile Include="Classes\ClientOrdersClass.cs" />
     <Compile Include="Classes\ColorsClass.cs" />
     <Compile Include="Classes\HowClass.cs" />
+    <Compile Include="Classes\ListtoDataTableConverter.cs" />
+    <Compile Include="Classes\OrderStatusClass.cs" />
     <Compile Include="Classes\ServicesClass.cs" />
+    <Compile Include="Classes\Utilites.cs" />
     <Compile Include="Clients\AllClients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +151,30 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\AllOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\AllOrders.Designer.cs">
+      <DependentUpon>AllOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\NewOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\NewOrder.Designer.cs">
+      <DependentUpon>NewOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\OrderStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\OrderStatus.Designer.cs">
+      <DependentUpon>OrderStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\ResevationOrdere.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\ResevationOrdere.Designer.cs">
+      <DependentUpon>ResevationOrdere.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -184,16 +226,16 @@
     <Compile Include="Setup\Services.Designer.cs">
       <DependentUpon>Services.cs</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="usp_FilterAllClientsByAreaID_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_FilterAllClientsBybranchID_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_FilterAllClientsBybRANDID_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_FilterAllClientsByCarID_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_FilterAllClientsByCatID_Result.cs">
@@ -244,7 +286,13 @@
     <Compile Include="usp_SelectAllClientsByID_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_SelectAllClientsByMobil_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="usp_SelectAllClientsByName_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_SelectAllClientsCar_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_SelectAllClients_Result.cs">
@@ -274,10 +322,16 @@
     <Compile Include="usp_SelectAllHowDidYouKnowUS_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_SelectAllOrdersByID_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="usp_SelectAllServicesByID_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_SelectAllServices_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_SelectAllStatus_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_SelectAreaByCityID_Result.cs">
@@ -300,6 +354,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\AllOrders.resx">
+      <DependentUpon>AllOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\NewOrder.resx">
+      <DependentUpon>NewOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\OrderStatus.resx">
+      <DependentUpon>OrderStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -335,11 +398,22 @@
     <EmbeddedResource Include="Setup\Services.resx">
       <DependentUpon>Services.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ALKPowerDataSet.xsc">
+      <DependentUpon>ALKPowerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALKPowerDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ALKPowerDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ALKPowerDataSet.xss">
+      <DependentUpon>ALKPowerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ELK_POWER_TemporaryKey.pfx" />
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ELK_POWER_TemporaryKey.pfx" />
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -358,16 +432,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
+    <None Include="Resources\txt.png" />
+    <None Include="Resources\Cancel.png" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\iconfinder_clients_43573.png" />
     <None Include="Resources\if_add-70px_510874.png" />
     <None Include="Resources\if_save_1730911.png" />
     <None Include="Resources\if_new-24_103173.png" />
@@ -387,6 +455,33 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn.png" />
+    <None Include="Resources\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\PendingSelected.png" />
+    <None Include="Resources\Pending.png" />
+    <None Include="Resources\DoneSelected.png" />
+    <None Include="Resources\Done.png" />
+    <None Include="Resources\ReActiveSelected.png" />
+    <None Include="Resources\ReActive.png" />
+    <None Include="Resources\ActivepngSelected.png" />
+    <None Include="Resources\Activepng.png" />
+    <None Include="Resources\delaypngSelected.png" />
+    <None Include="Resources\delaypng.png" />
+    <None Include="Resources\iconfinder_reservation_4172165.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

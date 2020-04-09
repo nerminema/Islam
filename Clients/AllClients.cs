@@ -26,15 +26,19 @@ namespace ELK_POWER.Clients
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
+            int id = int.Parse(dataGridView1.Rows[index].Cells["ID"].Value.ToString());
             if (e.ColumnIndex == 6)
             {
-            int id = int.Parse(dataGridView1.Rows[index].Cells["ID"].Value.ToString());
+           
                 Clients c = new Clients(id);
                 c.Show(this);
             }
             else if (e.ColumnIndex==7)
             {
-            
+                clientClass.Delete(id);
+
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridView1.DataSource = clientClass.SelectAll();
             }
         }
 
@@ -174,6 +178,12 @@ namespace ELK_POWER.Clients
             {
 
             }
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Clients c = new Clients();
+            c.Show();
         }
     }
 }

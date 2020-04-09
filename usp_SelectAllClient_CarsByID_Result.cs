@@ -19,5 +19,8 @@ namespace ELK_POWER
         public string CarNo { get; set; }
         public Nullable<int> ColorID { get; set; }
         public string KM { get; set; }
+        public string CarLetters { get; set; }
+        public string CC { get; set; }
+        public string V { get; set; }
     }
 }

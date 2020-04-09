@@ -65,6 +65,7 @@ namespace ELK_POWER.Setup
                 txt_model.Text = car[0].CarModel;
                 txt_year.Text = car[0].Man_Year;
                 cb_CarBrand.SelectedValue = car[0].BrandID.ToString();
+           
             }
             else if(e.ColumnIndex==5)
             {
